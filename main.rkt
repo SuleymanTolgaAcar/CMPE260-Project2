@@ -39,6 +39,7 @@
 (define (myhash arg table_size)
     (remainder (sum_digits (exact-floor (* (find_sin (binary_to_decimal arg) (+ (remainder (binary_to_decimal arg) 5) 1)) (expt 10 10))) 10) table_size))
 
+; Helper function to find the sum of the digits of the given value until the given number of digits
 (define (sum_digits value num)
     (if (<= num 0)
         0
@@ -49,6 +50,7 @@
     (let ((divided_arg (divide_address_space arg page_size)))
         (string-append (find_tail (car divided_arg) (list-ref page_table (myhash (car divided_arg) table_size))) (car (cdr divided_arg)))))
 
+; Helper function to find the value in the list of lists and return the tail of the inner list
 (define (find_tail value lst)
     (if (equal? (caar lst) value)
         (cadar lst)
